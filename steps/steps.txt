@@ -1,0 +1,7 @@
+
+
+templates of coins
+urls and views
+static files
+models
+others... .
