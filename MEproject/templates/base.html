@@ -1,0 +1,210 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>ME-office | {% block "title"%}home{% endblock "title"%}</title>          <!--title-->
+    {%  include 'partials/_head.html'  %}
+</head>
+<body data-ping-url="{% static "others/ping.txt" %}">
+
+    <!--
+    menu
+    -->
+    <section id="menu">
+        <i class="fa fa-angle-right" id="mcb"></i>
+
+        <article id="sidebar">
+
+            <article id="setting" class="parts-of-menu">
+                <section class="onekey key" id="terminal" title="Terminal">
+                    <b class="fa fa-terminal"></b>
+                </section>
+
+                <section class="onekey key" id="set-ting" title="Setting">
+                    <b class="fa fa-sliders"></b>
+                </section>
+
+                <section class="onekey key" id="about" title="About this part of site">
+                    <b class="fa fa-info-circle"></b>
+                </section>
+            </article>
+
+            <article id="credit" class="parts-of-menu">
+                <section class="twokey key" id="btc">000-</section>
+                <section class="twokey key" id="ss">000-</section>
+                <section class="twokey key" id="bgc">000-</section>
+                <section class="twokey key" id="plc">000-</section>
+            </article>
+
+            <article id="short-profile" class="parts-of-menu">
+                <img src="{% static "./images/image03.png" %}" class="threekey key" id="crown" alt="profile"/>
+
+                <section class="threekey key" id="username">
+                    username
+                </section>
+
+                <section class="threekey key" id="mle">
+                    Lord
+                </section>
+            </article>
+
+        </article>
+    </section>
+
+    {%  include 'partials/__glass-model.html'  %}
+
+
+    <!--
+    navigation
+    -->
+    {%  include 'partials/__navigator.html'  %}
+
+
+    <!--
+    header
+    -->
+    {%  include 'partials/__header.html'  %}
+
+
+    <!--
+    main
+    -->
+    <main class="a" id="main">
+
+        <img src="{% static "./images/image01.png" %}" id="LeoLuxBrand" alt="Leo|Lux"/>
+
+        <div id="box">
+            {% block "box" %}
+            
+                <div class="box-elements"></div>
+
+                <div class="box-elements"></div>
+
+            {% endblock "box" %}
+        </div>
+
+        <section id="content">
+
+            <section id="icons">
+
+                <section class="ico" id="topIcon">
+
+                    <i class="fa fa-bars"><n>&nbsp;&nbsp;menu</n></i>
+
+                </section>
+
+                <section class="ico" id="bottomIcon">
+
+                    <i class="fa fa-object-group"><n>&nbsp;&nbsp;SSS</n></i>
+
+                </section>
+
+            </section>
+
+            {% block "content" %}
+            {% endblock "content" %}
+
+        </section>
+
+    </main>
+
+
+    <!--
+    footer
+    -->
+    {%  include 'partials/__footer.html'  %}
+
+
+    <!--
+    others
+    -->
+    {%  include 'partials/__profile.html'  %}
+
+    {%  include 'partials/__loading.html'  %}
+
+    <script>//HUD
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const viewports = document.querySelectorAll('.hud-viewport');
+
+            viewports.forEach(viewport => {
+
+                const layers = viewport.querySelectorAll('.layer');
+
+                function updateAnimationSpeed() {
+
+                    const viewportWidth = viewport.clientWidth;
+
+                    layers.forEach(layer => {
+
+                        const textWidth = layer.scrollWidth;
+
+                        /*
+                        * کل مسافتی که متن باید طی کند:
+                        *
+                        * عرض viewport
+                        * +
+                        * عرض خود متن
+                        */
+                        const distance = viewportWidth + textWidth;
+
+
+                        /*
+                        * سرعت حرکت
+                        * واحد: pixel / second
+                        */
+                        let speed;
+
+                        if (layer.classList.contains('layer-bg')) {
+
+                            speed = 80;
+
+                        } else if (layer.classList.contains('layer-main')) {
+
+                            speed = 100;
+
+                        } else if (layer.classList.contains('layer-fast')) {
+
+                            speed = 150;
+
+                        } else {
+
+                            speed = 100;
+                        }
+
+
+                        /*
+                        * duration بر اساس طول واقعی متن
+                        */
+                        let duration = distance / speed;
+
+
+                        /*
+                        * برای متن‌های خیلی کوتاه
+                        * زمان بیش از حد کم نشود.
+                        */
+                        duration = Math.max(duration, 5);
+
+
+                        layer.style.animationDuration = `${duration}s`;
+                    });
+                }
+
+
+                updateAnimationSpeed();
+
+
+                /*
+                * اگر اندازه صفحه تغییر کرد،
+                * دوباره محاسبه می‌کنیم.
+                */
+                window.addEventListener('resize', updateAnimationSpeed);
+            });
+
+        });
+    </script>
+</body>
+</html>
