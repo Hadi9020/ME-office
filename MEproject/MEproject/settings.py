@@ -21,6 +21,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'members.apps.MembersConfig',
+    'news.apps.NewsConfig',
     'coins.apps.CoinsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
