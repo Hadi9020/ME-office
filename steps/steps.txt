@@ -1,7 +1,9 @@
+**Steps**
 
-
-templates of coins
-urls and views
-static files
-models
-others... .
+1.[ ] admin part
+2.[ ] dynamic parts
+3.[ ] coins
+4.[ ] news
+5.[ ] members
+6.[ ] repair css files
+7.[ ] testing
