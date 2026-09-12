@@ -1,5 +1,5 @@
 from django.db import models
-from members import Member
+from members.models import Member
 from django.utils.text import slugify
 
 class Category(models.Model):

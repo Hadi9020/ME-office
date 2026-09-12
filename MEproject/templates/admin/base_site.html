@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin/admin.css' %}" /> 
+{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">ME-office.com</h1>
+{% endblock %}
+
+{% block content %}
+
+    <div class="my-custom-admin-container">
+        {% block admin_content %} 
+
+            {{ block.super }} 
+        {% endblock %}
+    </div>
+{% endblock %}

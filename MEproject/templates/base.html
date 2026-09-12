@@ -104,8 +104,8 @@
 
             </section>
 
-            {% block "content" %}
-            {% endblock "content" %}
+            {% block content %}
+            {% endblock %}
 
         </section>
 
@@ -142,20 +142,8 @@
 
                         const textWidth = layer.scrollWidth;
 
-                        /*
-                        * کل مسافتی که متن باید طی کند:
-                        *
-                        * عرض viewport
-                        * +
-                        * عرض خود متن
-                        */
                         const distance = viewportWidth + textWidth;
 
-
-                        /*
-                        * سرعت حرکت
-                        * واحد: pixel / second
-                        */
                         let speed;
 
                         if (layer.classList.contains('layer-bg')) {
@@ -175,17 +163,8 @@
                             speed = 100;
                         }
 
-
-                        /*
-                        * duration بر اساس طول واقعی متن
-                        */
                         let duration = distance / speed;
 
-
-                        /*
-                        * برای متن‌های خیلی کوتاه
-                        * زمان بیش از حد کم نشود.
-                        */
                         duration = Math.max(duration, 5);
 
 
@@ -196,11 +175,6 @@
 
                 updateAnimationSpeed();
 
-
-                /*
-                * اگر اندازه صفحه تغییر کرد،
-                * دوباره محاسبه می‌کنیم.
-                */
                 window.addEventListener('resize', updateAnimationSpeed);
             });
 

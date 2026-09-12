@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import time
+from django.utils import timezone 
 
 class Member(models.Model):
     class MLEchoices(models.TextChoices):
@@ -18,7 +18,7 @@ class Member(models.Model):
     user_name     = models.CharField(max_length=20)
     phone         = models.CharField(max_length=11)
     email         = models.EmailField()
-    birth_date    = models.DateField(default=time.now())
+    birth_date    = models.DateField(default=timezone.now)
     register_date = models.DateField(auto_created=True,auto_now_add=True)
     mle           = models.CharField(choices=MLEchoices, max_length=9)
     gender        = models.CharField(choices=GenderChoices)
